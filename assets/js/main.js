@@ -16,10 +16,10 @@ $(document).ready(function() {
       if (user.name === null || user.name === undefined ) {
         // error handler for username not found
         $("#profile").html(`
-          <div class="container text-center error">
-            <h1>404!</h1>
-            <h4>File not found</h4>
-          </div> <!-- end container -->
+          <div class="text-center error">
+            <h2>404!</h2>
+            <h4>User not found</h4>
+          </div> <!-- end error -->
         `);
       } else {
         // render the profile information
