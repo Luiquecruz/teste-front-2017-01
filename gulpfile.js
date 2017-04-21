@@ -39,13 +39,22 @@ gulp.task('styles', function() {
 	.pipe(reload({stream: true})); // live reload
 });
 
+gulp.task('scripts', function() {
+	gulp.src([
+		'assets/js/*.js',
+	 	'!assets/js/*min.js'
+	])
+	.pipe(reload({stream: true})); // live reload
+});
+
 ///////////////// watch /////////////////
 
 gulp.task('watch', function() {
   gulp.watch('assets/scss/*.scss', ['styles']);
+  gulp.watch('assets/js/*.js', ['scripts']);
   gulp.watch('../teste-front-2017-01/*.html', ['html']);
 });
 
 ///////////////// default /////////////////
 
-gulp.task('start', ['styles', 'html', 'browser-sync', 'watch']);
+gulp.task('start', ['styles', 'scripts', 'html', 'browser-sync', 'watch']);

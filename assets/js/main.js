@@ -30,20 +30,25 @@ $(document).ready(function() {
               <div class="row">
                 <div class="col-md-3">
                   <img class="thumbnail avatar" src="${user.avatar_url}">
-                  <a class="btn btn-primary btn-block" href="${user.html_url}" target="_blank">View Profile</a>
+                  <a class="btn btn-default btn-block" href="${user.html_url}" target="_blank">
+                    View Profile <span class="glyphicon glyphicon-share"></span>
+                  </a>
+                  <a id="add-note" class="btn btn-default btn-block" href="#">
+                     Add a Note <span class="glyphicon glyphicon-edit"></span>
+                  </a>
                   <br>
                 </div>
                 <div class="col-md-9">
-                  <span class="label label-default">Public Repos: ${user.public_repos}</span>
-                  <span class="label label-primary">Public Gists: ${user.public_gists}</span>
-                  <span class="label label-success">Following: ${user.following}</span>
-                  <span class="label label-info">Followers: ${user.followers}</span>
+                  <span class="label label-primary">Public Repos: ${user.public_repos}</span>
+                  <span class="label label-danger">Public Gists: ${user.public_gists}</span>
+                  <span class="label label-default">Following: ${user.following}</span>
+                  <span class="label label-default">Followers: ${user.followers}</span>
                   <br><br>
                   <ul class="list-group">
                     <li class="list-group-item">Location: ${user.location}</li>
                     <li class="list-group-item">Company: ${user.company}</li>
                     <li class="list-group-item">Email: ${user.email}</li>
-                    <li class="list-group-item">Website/blog: <a href="${user.blog}" target="_blank">${user.blog}</a></li>
+                    <li class="list-group-item">Website/blog: <a href="${user.blog}" target="_blank"> ${user.blog}</a></li>
                     <li class="list-group-item">Member Since: ${user.created_at}</li>
                   </ul>
                 </div>
@@ -51,7 +56,7 @@ $(document).ready(function() {
             </div> <!-- end panel-body -->
           </div> <!-- end panel -->
           
-          <h3 class="page-header">Latest Repos</h3>
+          <h3 class="page-header">Repositories</h3>
 
           <div id="repos"></div>
 
@@ -83,7 +88,6 @@ $(document).ready(function() {
         data: {
           client_id: 'bd27811095169a2986c8',
           client_secret: '775086d2ce6236f285bdc437f96a3cb2ca210f21',
-          sort: 'created: asc',
           per_page: 3
         }
       }).done(function(repos) {
@@ -98,13 +102,15 @@ $(document).ready(function() {
                   ${repo.description}
                 </div>
                 <div class="col-md-3">
+                  <span class="label label-default">Watchers: ${repo.watchers_count}</span>
+                  <span class="label label-warning">Stars: ${repo.stargazers_count}</span>
                   <span class="label label-default">Forks: ${repo.forks_count}</span>
-                  <span class="label label-primary">Watchers: ${repo.watchers_count}</span>
-                  <span class="label label-success">Stars: ${repo.stargazers_count}</span>
                 </div>
                 <div class="col-md-2">
                   <br>
-                  <a class="btn btn-primary" href="${repo.html_url}" target="_blank">Visit</a>
+                  <a class="btn btn-default" href="${repo.html_url}" target="_blank">
+                    Visit Repository <span class="glyphicon glyphicon-share"></span>
+                  </a>
                 </div>
               </div> <!-- end row -->
             </div> <!-- end well -->
