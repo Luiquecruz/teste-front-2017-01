@@ -1,5 +1,6 @@
 # Generic gitignore file #
 ##########################
+/node_modules/
 
 # Compiled source #
 ###################

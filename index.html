@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GitHub User Viewer</title>
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/main.min.css">
+</head>
+<body>
+  
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">GitHub User Viewer</a>
+      </div>
+    </div>
+  </nav> <!-- end navbar -->
+
+  <div class="container">
+    <div class="search-box">
+      <h1>Search for github users</h1>
+      <p class="lead">Enter a username to get the respective information</p>
+      <input type="text" name="serch" id="search" class="form-control" placeholder="github username...">
+    </div>
+  </div> <!-- end container -->
+
+  <br>
+
+  <!-- Display user information from api -->
+  <div class="container">
+    <div id="profile"></div> <!-- end profile -->
+  </div> <!-- end container -->
+
+  <!-- scripts -->
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap js CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Custom Script -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
