@@ -3,12 +3,10 @@
 ## GitHub User Viewer
 É um webapp que permite ao usuário fazer buscas através de usernames do github, ter uma visualização de seu perfíl com informações básicas, fazer anotações ou observações sobre cada usuário e navegar por seus repositórios.
 
----
-
 ### Funções implementadas até o momento.
 
 * Pesquisa por username.
-* Anotações.
+* Visualização de repositórios.
 * Pagina 404 para usuário não encontrado.
 
 ---
@@ -27,8 +25,8 @@ Ter instalado em seu computador:
 
 ---
 
-#### Instalação para Desenvolvedores
-##### Requisitos
+### Instalação para Desenvolvedores
+#### Requisitos
 Ter instalado em seu computador:
 
 * git
@@ -57,3 +55,5 @@ Ter instalado em seu computador:
  ```
   gulp start
  ```
+
+ ---
