@@ -8,6 +8,7 @@
 * Pesquisa por username.
 * Visualização de repositórios.
 * Pagina 404 para usuário não encontrado.
+* Armazenamento local de anotações sobre usuários.
 
 ---
 

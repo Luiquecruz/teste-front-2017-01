@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  // Search for github users profile by username
   $("#search").on("keyup",function(e) {
     var username = e.target.value;
 
@@ -10,7 +11,7 @@ $(document).ready(function() {
         client_id: 'bd27811095169a2986c8',
         client_secret: '775086d2ce6236f285bdc437f96a3cb2ca210f21'
       }
-    }).done(function(user) {
+    }).done(function(user) { // main template
       // output data
       if (user.name === null || user.name === undefined ) {
         // error handler for username not found
@@ -21,6 +22,7 @@ $(document).ready(function() {
           </div> <!-- end container -->
         `);
       } else {
+        // render the profile information
         $("#profile").html(`
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -28,16 +30,19 @@ $(document).ready(function() {
             </div> <!-- end panel-heading -->
             <div class="panel-body">
               <div class="row">
+
                 <div class="col-md-3">
                   <img class="thumbnail avatar" src="${user.avatar_url}">
                   <a class="btn btn-default btn-block" href="${user.html_url}" target="_blank">
-                    View Profile <span class="glyphicon glyphicon-share"></span>
-                  </a>
-                  <a id="add-note" class="btn btn-default btn-block" href="#">
-                     Add a Note <span class="glyphicon glyphicon-edit"></span>
+                    View Full Profile <span class="glyphicon glyphicon-share"></span>
                   </a>
                   <br>
+                  <button id="add-note" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">
+                     Add a Note <span class="glyphicon glyphicon-edit"></span>
+                  </button> 
+                  <br>
                 </div>
+
                 <div class="col-md-9">
                   <span class="label label-primary">Public Repos: ${user.public_repos}</span>
                   <span class="label label-danger">Public Gists: ${user.public_gists}</span>
@@ -52,6 +57,7 @@ $(document).ready(function() {
                     <li class="list-group-item">Member Since: ${user.created_at}</li>
                   </ul>
                 </div>
+
               </div> <!-- end row -->
             </div> <!-- end panel-body -->
           </div> <!-- end panel -->
@@ -115,10 +121,47 @@ $(document).ready(function() {
               </div> <!-- end row -->
             </div> <!-- end well -->
           `);
-        });
+        }); // end repos output
       });
-
-    });
+    }); // end main template
   });
 
+  // Create an anotation on localStorage
+  $('#add-note').on('submit', function(e){
+    addNote(e);
+	});
 });
+
+// Function to add a note
+function addNote(e){
+  // create an unique ID
+  var newDate = new Date();
+  id = newDate.getTime();
+
+  var note = $('#note').val();
+
+  // New note Object
+    var new_note = {
+      "id": id,
+      "note": note
+    };
+
+    var noteList = JSON.parse(localStorage.getItem('notes'));
+
+  // Simple Validation
+  if(note === ''){
+    alert('note is required');
+    e.preventDefault();
+  } else {
+    var notes = JSON.parse(localStorage.getItem('notes'));
+
+    // Check notes
+    if(notes === null){
+      notes = [];
+    }
+
+    notes.push(new_note);
+    localStorage.setItem('notes', JSON.stringify(notes));
+    alert('Note Added');
+  }
+}
