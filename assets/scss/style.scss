@@ -4,14 +4,15 @@
 $gradient: linear-gradient(to bottom, #13E38E 1%,#0D9FFF 99%);
 $font: 'Arvo', serif;
 $black: #333;
+$grey: #777;
 $white: #FFF;
 $gold: #E8AE0C;
 $blue: #0D9FFF;
+$green: #13E38E;
 
 // mixins
-@mixin material-1 { box-shadow: 1px 3px 8px #555; }
-@mixin material-2 { box-shadow: 0 2px 6px #555; }
-
+@mixin material-1 { box-shadow: 1px 3px 8px $black; }
+@mixin material-2 { box-shadow: 0 2px 6px #444; }
 @mixin transition { transition: all .5s, ease-in .15s; }
 
 // general style
@@ -33,6 +34,7 @@ body {
     top: 10px;
     font-size: 1.2em;
     color: $white;
+    text-decoration: none;
   }
 }
 
@@ -104,8 +106,46 @@ body {
       border: none;
     }
 
-    span {
+    .label-primary { background-color: $blue; }
 
+    .list-group {
+      li {
+        border-left: none;
+        border-right: none;
+
+        .info { color: $grey; }
+
+        a {
+          color: $blue;
+          text-decoration: none;
+        }
+      }
     }
+  }
+}
+
+// repositories styling
+.page-header {
+  color: $white;
+  font-weight: bold;
+  border-bottom: none;
+  margin-top: 0;
+}
+
+.well {
+  .repo-name { margin-bottom: -20px; }
+  .description { color: $grey; }
+  .label-warning { background-color: $gold; }
+}
+
+// pagination nav
+.pagination {
+  li {
+    a {
+      padding: 8px 20px;
+      color: $blue;
+    }
+
+    span { color: $blue; }
   }
 }
