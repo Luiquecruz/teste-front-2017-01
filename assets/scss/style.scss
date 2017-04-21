@@ -1,1 +1,112 @@
-.avatar { width: 100%; }
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700');
+
+
+// variables
+$gradient: linear-gradient(to bottom, #13E38E 1%,#0D9FFF 99%);
+$font: 'Inconsolata', monospace;;
+$black: #333;
+$white: #FFF;
+$gold: #E8AE0C;
+$blue: #0D9FFF;
+
+// mixins
+@mixin material-1 { box-shadow: 1px 3px 8px #555; }
+@mixin material-2 { box-shadow: 0 2px 6px #555; }
+
+@mixin transition { transition: all .5s, ease-in .15s; }
+
+// general style
+body {
+  background: $gradient;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: $font;
+  color: $black;
+}
+
+// elements
+.navbar {
+  @include material-2;
+  background-color: $black;
+  border: none;
+  .logo {
+    position: relative;
+    top: 10px;
+    font-size: 1.2em;
+    color: $white;
+  }
+}
+
+.modal {
+  .modal-header {
+    background-color: $black;
+    color: $white;
+
+    .close { color: $white; }
+  }
+}
+
+.btn {
+  @include material-1;
+  @include transition;
+  background-color: $black;
+  border: none;
+  opacity: .96;
+  color: $white;
+
+  &:hover, &:active {
+    background-color: $white;
+    color: $black;
+  }
+
+  span {
+    margin-left: 5px;
+  }
+}
+
+// search-box styling
+.search-box {
+  h1 {
+    color: $white;
+    font-weight: bold;
+    font-size: 3.3em;
+  }
+
+  p { margin-top: 10px; }
+}
+
+// error styling
+.error {
+  background-color: $black;
+  color: $white;
+  padding: 40px;
+  border-radius: 4px;
+
+  h2 {
+    font-size: 3.5em;
+    font-weight: bold;
+  }
+}
+
+// panel styling
+.panel {
+  .panel-heading {
+    background-color: $black;
+    color: $white;
+    margin: -1px;
+    border: none;
+  }
+
+  .panel-body {
+    .avatar {
+      @include material-2;
+      width: 100%;
+      background-color: $black;
+      border: none;
+    }
+
+    span {
+
+    }
+  }
+}
