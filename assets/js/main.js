@@ -18,14 +18,14 @@ $(document).ready(function() {
           <div class="container text-center error">
             <h1>404!</h1>
             <h4>File not found</h4>
-          </div>
+          </div> <!-- end container -->
         `);
       } else {
         $("#profile").html(`
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">${user.name}</h3>
-            </div>
+            </div> <!-- end panel-heading -->
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-3">
@@ -47,11 +47,14 @@ $(document).ready(function() {
                     <li class="list-group-item">Member Since: ${user.created_at}</li>
                   </ul>
                 </div>
-              </div>
-            </div>
-          </div>
+              </div> <!-- end row -->
+            </div> <!-- end panel-body -->
+          </div> <!-- end panel -->
+          
           <h3 class="page-header">Latest Repos</h3>
+
           <div id="repos"></div>
+
           <nav class="text-center" aria-label="Page navigation">
             <ul class="pagination">
               <li>
@@ -70,7 +73,7 @@ $(document).ready(function() {
                 </a>
               </li>
             </ul>
-          </nav>
+          </nav> <!-- end pagination nav -->
         `);
       }
 
@@ -103,8 +106,8 @@ $(document).ready(function() {
                   <br>
                   <a class="btn btn-primary" href="${repo.html_url}" target="_blank">Visit</a>
                 </div>
-              </div>
-            </div>
+              </div> <!-- end row -->
+            </div> <!-- end well -->
           `);
         });
       });
