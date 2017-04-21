@@ -44,17 +44,17 @@ $(document).ready(function() {
                 </div>
 
                 <div class="col-md-9">
+                  <span class="label label-default">Public Gists: ${user.public_gists}</span>
                   <span class="label label-primary">Public Repos: ${user.public_repos}</span>
-                  <span class="label label-danger">Public Gists: ${user.public_gists}</span>
                   <span class="label label-default">Following: ${user.following}</span>
                   <span class="label label-default">Followers: ${user.followers}</span>
                   <br><br>
                   <ul class="list-group">
-                    <li class="list-group-item">Location: ${user.location}</li>
-                    <li class="list-group-item">Company: ${user.company}</li>
-                    <li class="list-group-item">Email: ${user.email}</li>
-                    <li class="list-group-item">Website/blog: <a href="${user.blog}" target="_blank"> ${user.blog}</a></li>
-                    <li class="list-group-item">Member Since: ${user.created_at}</li>
+                    <li class="list-group-item">Location: <p class="info">${user.location}</p></li>
+                    <li class="list-group-item">Company: <p class="info">${user.company}</p></li>
+                    <li class="list-group-item">Email: <p class="info">${user.email}</p></li>
+                    <li class="list-group-item">Website | blog: <a href="${user.blog}" target="_blank"> ${user.blog}</a></li>
+                    <li class="list-group-item">Member Since: <p class="info">${user.created_at.slice(0,10)}</p></li>
                   </ul>
                 </div>
 
@@ -63,7 +63,6 @@ $(document).ready(function() {
           </div> <!-- end panel -->
           
           <h3 class="page-header">Repositories</h3>
-
           <div id="repos"></div>
 
           <nav class="text-center" aria-label="Page navigation">
@@ -103,9 +102,9 @@ $(document).ready(function() {
             <div class="well">
               <div class="row">
                 <div class="col-md-7">
-                  <strong>${repo.name}</strong>
+                  <h4 class="repo-name">${repo.name}</h4>
                   <br><br>
-                  ${repo.description}
+                  <p class="description">${repo.description}</p>
                 </div>
                 <div class="col-md-3">
                   <span class="label label-default">Watchers: ${repo.watchers_count}</span>
