@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // Search for github users profile by username
   $("#search").on("keyup",function(e) {
-    var username = e.target.value;
+    let username = e.target.value;
 
     // request user info
     $.ajax({
@@ -93,7 +93,7 @@ $(document).ready(function() {
         data: {
           client_id: 'bd27811095169a2986c8',
           client_secret: '775086d2ce6236f285bdc437f96a3cb2ca210f21',
-          per_page: 3
+          per_page: 5
         }
       }).done(function(repos) {
         // output data
@@ -126,13 +126,14 @@ $(document).ready(function() {
   });
 
   // Create an anotation on localStorage
-  $('#add-note').on('submit', function(e){
+  $('#add-note').on('submit', function(e) {
     addNote(e);
 	});
+  
 });
 
 // Function to add a note
-function addNote(e){
+function addNote(e) {
   // create an unique ID
   var newDate = new Date();
   id = newDate.getTime();
