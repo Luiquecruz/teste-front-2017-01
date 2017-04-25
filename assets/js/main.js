@@ -1,16 +1,16 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
   // Search for github users profile by $username
-  $("#search").on("keyup",function(e) {
+  $("#search").on("keyup", function (e) {
     var username = e.target.value;
     getUser(username);
   });
 
   // Create an anotation on localStorage
-  $('#add-note').on('submit', function(e) {
+  $('#add-note').on('submit', function (e) {
     addNote(e);
-	});
-  
+  });
+
 });
 
 ////////////////////////////////////////
@@ -31,9 +31,9 @@ function getUser(username) {
       client_id: 'bd27811095169a2986c8',
       client_secret: '775086d2ce6236f285bdc437f96a3cb2ca210f21'
     },
-    success: (function(user) {
+    success: (function (user) {
       // output data
-      if ( user.name === null || user.name === undefined ) {
+      if (user.name === null || user.name === undefined) {
         error(user);
       } else {
         // render the profile information
@@ -55,11 +55,11 @@ function getRepos(username) {
       client_id: 'bd27811095169a2986c8',
       client_secret: '775086d2ce6236f285bdc437f96a3cb2ca210f21',
       per_page: itemOnPage
-    },      
-    success: (function(repos) {
+    },
+    success: (function (repos) {
       // output data
-      $.each(repos, function(index, $repo) {
-         getReposInfo($repo);
+      $.each(repos, function (index, $repo) {
+        getReposInfo($repo);
       });
     })
   });
@@ -68,15 +68,15 @@ function getRepos(username) {
 
 function pagination(user) {
   $('#pagination-demo').twbsPagination({
-    totalPages:  Math.ceil(user.public_repos / itemOnPage),
+    totalPages: Math.ceil(user.public_repos / itemOnPage),
     startPage: 1,
     visiblePages: 3,
     next: '&raquo;',
     prev: '&laquo;',
     onPageClick: function(event, page) {
-      // função para exibir os outros repositórios por pagina
+      // aqui é treta
     }
-  }); 
+  });
 } // end pagination()
 
 function addNote(e) { // Function to add a note
@@ -87,22 +87,22 @@ function addNote(e) { // Function to add a note
   var note = $('#note').val();
 
   // New note Object
-    var new_note = {
-      "id": id,
-      "note": note
-    };
+  var new_note = {
+    "id": id,
+    "note": note
+  };
 
-    var noteList = JSON.parse(localStorage.getItem('notes'));
+  var noteList = JSON.parse(localStorage.getItem('notes'));
 
   // Simple Validation
-  if(note === ''){
+  if (note === '') {
     alert('note is required');
     e.preventDefault();
   } else {
     var notes = JSON.parse(localStorage.getItem('notes'));
 
     // Check notes
-    if(notes === null){
+    if (notes === null) {
       notes = [];
     }
 
@@ -158,7 +158,7 @@ function getUserInfo(user) { // user profile template
               <li class="list-group-item">Company: <p class="info">${user.company}</p></li>
               <li class="list-group-item">Email: <p class="info">${user.email}</p></li>
               <li class="list-group-item">Website | blog: <a href="${user.blog}" target="_blank"> ${user.blog}</a></li>
-              <li class="list-group-item">Member Since: <p class="info">${user.created_at.slice(0,10)}</p></li>
+              <li class="list-group-item">Member Since: <p class="info">${user.created_at.slice(0, 10)}</p></li>
             </ul>
           </div>
 
