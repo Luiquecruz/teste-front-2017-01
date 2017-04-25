@@ -25,7 +25,7 @@ Ter instalado em seu computador:
 ---
 
 1. Click no botão de [download](https://github.com/Luiquecruz/teste-front-2017-01/archive/master.zip) para baixar o app direto do repositório.
-2. Extraia o arquivos **.zip** em uma pasta em seu computador.
+2. Extraia o arquivo **.zip** em seu computador.
 3. Abra o arquivo **index.html**.
 
 ---
