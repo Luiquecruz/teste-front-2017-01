@@ -66,40 +66,26 @@ $(document).ready(function() {
           <div id="repos"></div>
 
           <nav class="text-center" aria-label="Page navigation">
-            <ul class="pagination">
-              <li>
-                <a href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li>
-                <a href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
+            <div id="pagination-demo" class="pagination-sm"></div>
           </nav> <!-- end pagination nav -->
         `);
       }
 
-       // request repos info
+      // default value
+      var itemOnPage = 5;
+
       $.ajax({
         url: 'https://api.github.com/users/' + username + '/repos',
         data: {
           client_id: 'bd27811095169a2986c8',
           client_secret: '775086d2ce6236f285bdc437f96a3cb2ca210f21',
-          per_page: 5
+          per_page: itemOnPage
         }
       }).done(function(repos) {
         // output data
         $.each(repos, function(index, repo) {
           $("#repos").append(`
-            <div class="well">
+            <div class="well" id="content">
               <div class="row">
                 <div class="col-md-7">
                   <h4 class="repo-name">${repo.name}</h4>
@@ -120,6 +106,19 @@ $(document).ready(function() {
               </div> <!-- end row -->
             </div> <!-- end well -->
           `);
+
+          //pagination
+          $('#pagination-demo').twbsPagination({
+            totalPages: user.public_repos / Math.ceil(3),
+            startPage: 1,
+            visiblePages: 3,
+            next: '&raquo;',
+            prev: '&laquo;',
+            onPageClick: function(event, page) {
+              // função para exibir os outros repositórios por pagina
+            }
+          });
+
         }); // end repos output
       });
     }); // end main template
