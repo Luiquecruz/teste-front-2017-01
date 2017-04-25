@@ -23,7 +23,7 @@ gulp.task('html', function() {
 	.pipe(reload({stream: true})); // live reload
 });
 
-// combine .scss and .css files and minify into a main.min.css file
+// css task
 gulp.task('styles', function() {
 	gulp.src([
 		'assets/scss/*.scss',
@@ -39,9 +39,10 @@ gulp.task('styles', function() {
 	.pipe(reload({stream: true})); // live reload
 });
 
+// js task
 gulp.task('scripts', function() {
 	gulp.src([
-		'assets/js/*.js',
+	 	'assets/js/*.js',
 	 	'!assets/js/*min.js'
 	])
 	.pipe(reload({stream: true})); // live reload
