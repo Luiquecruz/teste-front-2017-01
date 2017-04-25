@@ -4,6 +4,8 @@ var gulp = require('gulp'),
 	 sass = require('gulp-sass'),
 	 autoPrefixer = require('gulp-autoprefixer'),
 	 concat = require('gulp-concat'),
+	 uglifyjs = require('gulp-uglify'),
+	 babel = require('gulp-babel'),
 	 uglifycss = require('gulp-uglifycss'),
 	 rename = require('gulp-rename'),
 	 plumber = require('gulp-plumber'),
@@ -34,7 +36,7 @@ gulp.task('styles', function() {
 	.pipe(concat('main.css'))
 	.pipe(autoPrefixer())
 	.pipe(uglifycss({'uglyComments': true}))
-	.pipe(rename({suffix:'.min'}))
+	.pipe(rename({suffix: '.min'}))
 	.pipe(gulp.dest('assets/css'))
 	.pipe(reload({stream: true})); // live reload
 });
@@ -42,9 +44,14 @@ gulp.task('styles', function() {
 // js task
 gulp.task('scripts', function() {
 	gulp.src([
-	 	'assets/js/*.js',
-	 	'!assets/js/*min.js'
-	])
+			'assets/js/*.js',
+			'!assets/js/*min.js'
+		])
+	.pipe(plumber())
+	.pipe(babel({presets: ['es2015']}))
+	.pipe(uglifyjs())
+	.pipe(rename({suffix: '.min'}))
+	.pipe(gulp.dest('assets/js'))
 	.pipe(reload({stream: true})); // live reload
 });
 
