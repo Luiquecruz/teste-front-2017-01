@@ -1,23 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Arvo:400,700');
 
 // variables
-$gradient: linear-gradient(to bottom, #13E38E 1%,#0D9FFF 99%);
 $font: 'Arvo', serif;
 $black: #333;
 $grey: #777;
-$white: #FFF;
+$white: #F9F9F9;
 $gold: #E8AE0C;
-$blue: #0D9FFF;
-$green: #13E38E;
+$blue: #0D9FCC;
+$blue2: #0D9FFF;
+//$gradient: linear-gradient(to bottom, $blue2 2%,$blue 98%);
 
 // mixins
-@mixin material-1 { box-shadow: 2px 3px 5px $black; }
-@mixin material-2 { box-shadow: 1px 2px 3px #444; }
+//@mixin material-1 { box-shadow: 2px 3px 5px $black; }
+@mixin material-2 { box-shadow: 1px 2px 3px $grey; }
+@mixin material-3 { box-shadow: 0 2px 10px $grey; }
+@mixin material-4 { box-shadow: 0 1px 5px $grey; }
 @mixin transition { transition: all .5s, ease-in .15s; }
+@mixin border {
+  border: 0;
+  border-radius: 0;
+}
 
 // general style
 body {
-  background: $gradient;
+  background: $white;
   background-attachment: fixed;
   background-repeat: no-repeat;
   font-family: $font;
@@ -26,10 +32,9 @@ body {
 
 // elements
 .navbar {
-  @include material-2;
+  @include material-3;
+  @include border;
   background-color: $black;
-  border: none;
-  border-radius: none;
   .logo {
     position: relative;
     top: 10px;
@@ -40,23 +45,36 @@ body {
 }
 
 .modal {
+  @include border;
   .modal-header {
     background-color: $black;
     color: $white;
 
     .close { color: $white; }
   }
+
+  .modal-body {
+    background-color: $white;
+
+    input {
+      @include border;
+
+      &:focus {
+        @include material-2;
+      }  
+    }
+  }
 }
 
 .btn {
-  @include material-1;
+  @include material-2;
   @include transition;
+  @include border;
   background-color: $black;
-  border: none;
   opacity: .96;
   color: $white;
 
-  &:hover, &:active {
+  &:hover, &:active, &:focus {
     background-color: $white;
     color: $black;
   }
@@ -68,22 +86,32 @@ body {
 
 // search-box styling
 .search-box {
+  @include border;
+  @include transition;
   h1 {
-    color: $white;
+    color: $black;
     font-weight: bold;
     font-size: 3.3em;
   }
 
   p { margin-top: 10px; }
+
+  .form-control {
+    @include border;
+
+    &:focus {
+      @include material-2;
+    }  
+  }
 }
 
 // error styling
 .error {
   @include material-2;
+  @include border;
   background-color: $black;
   color: $white;
-  padding: 40px;
-  border-radius: 4px;
+  padding: 60px;
 
   h2 {
     font-size: 3.5em;
@@ -93,21 +121,26 @@ body {
 
 // panel styling
 .panel {
+  @include border;
   .panel-heading {
+    @include border;
+    @include material-4;
     background-color: $black;
     color: $white;
-    margin: -1px;
-    border: none;
   }
 
   .panel-body {
     .avatar {
-      @include material-2;
+      @include border;
       width: 100%;
-      border: none;
     }
 
-    .label-primary { background-color: $blue; }
+    .label {
+      @include border;
+      padding: 10px;
+     }
+     
+    .label-primary { background-color: $blue2; }
 
     .list-group {
       li {
@@ -117,7 +150,7 @@ body {
         .info { color: $grey; }
 
         a {
-          color: $blue;
+          color: $blue2;
           text-decoration: none;
         }
       }
@@ -127,26 +160,66 @@ body {
 
 // repositories styling
 .page-header {
-  color: $white;
+  color: $black;
   font-weight: bold;
   border-bottom: none;
   margin-top: 0;
 }
 
+// repos
 .well {
+  @include border;
+  background-color: #fff;
   .repo-name { margin-bottom: -20px; }
   .description { color: $grey; }
+
+  .label {
+    @include border;
+    padding: 10px;
+  }
+
   .label-warning { background-color: $gold; }
 }
 
 // pagination nav
-.pagination-sm {
-  div {
-    a {
-      padding: 8px 16px;
-      color: $blue;
-    }
+.pagination {
+  //@include border;
+  .active {
+    .page-link {
+      @include border;
+      background-color: $black;
+      color: $white;
+      padding: 11px 13px;
 
-    span { color: $blue; }
+       &:hover, &:active, &:focus {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+
+  .first {
+    .page-link {
+      border-radius: 0;
+      color: $black;
+    }
+  }
+
+  .last {
+    .page-link {
+      border-radius: 0;
+      color: $black;
+    }
+  }  
+
+  .page-item {
+    a {
+      //@include border;
+      padding: 10px 12px;
+      color: $black;
+
+      &:hover { color: $black; }
+    }
+    span { color: $black; }
   }
 }

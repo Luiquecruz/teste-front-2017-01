@@ -1,6 +1,6 @@
 # teste-front-2017-01
 
-![home](https://cloud.githubusercontent.com/assets/12043837/25298705/db0c2cf0-26cd-11e7-9141-de48e19b9dd9.png)
+![homeb](https://cloud.githubusercontent.com/assets/12043837/25412009/72805176-29f6-11e7-8f68-eb3ac8e777ef.png)
 
 ## GitHub User Viewer
 É um webapp que permite ao usuário fazer buscas através de usernames do github, ter uma visualização de seu perfil com informações básicas, fazer anotações sobre cada usuário e navegar por seus repositórios.

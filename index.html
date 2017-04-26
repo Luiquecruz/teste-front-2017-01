@@ -55,14 +55,92 @@
     <!-- end modal -->
   </div> <!-- end container -->
 
+  <script id="userTemplate" type="text/x-jsrender">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{:name}}</h3>
+      </div> <!-- end panel-heading -->
+      <div class="panel-body">
+        <div class="row">
+
+          <div class="col-md-3">
+            <img class="thumbnail avatar" src="{{:avatar_url}}">
+            <a class="btn btn-default btn-block" href="{{:html_url}}" target="_blank">
+              View Full Profile <span class="glyphicon glyphicon-share"></span>
+            </a>
+            <br>
+            <button id="add-note" class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">
+                Add a Note <span class="glyphicon glyphicon-edit"></span>
+            </button> 
+            <br>
+          </div>
+
+          <div class="col-md-9">
+            <span class="label label-default">Public Gists: {{:public_gists}}</span>
+            <span class="label label-primary">Public Repos: {{:public_repos}}</span>
+            <span class="label label-default">Following: {{:following}}</span>
+            <span class="label label-default">Followers: {{:followers}}</span>
+            <br><br>
+            <ul class="list-group">
+              <li class="list-group-item">Location: <p class="info">{{:location}}</p></li>
+              <li class="list-group-item">Company: <p class="info">{{:company}}</p></li>
+              <li class="list-group-item">Email: <p class="info">{{:email}}</p></li>
+              <li class="list-group-item">Website | blog: <a href="{{:blog}}" target="_blank"> {{:blog}}</a></li>
+              <li class="list-group-item">Member Since: <p class="info">{{:created_at.slice(0,10)}}</p></li>
+            </ul>
+          </div>
+
+        </div> <!-- end row -->
+      </div> <!-- end panel-body -->
+    </div> <!-- end panel -->
+    <h3 class="page-header">Repositories</h3>
+    <div id="repos"></div>
+    <nav class="text-center" aria-label="Page navigation">
+      <div id="pagination" class="pagination-sm"></div>
+    </nav> <!-- end pagination nav -->    
+  </script>
+
+  <script id="userNotFoundTemplate" type="text/x-jsrender">
+    <div class="text-center error">
+      <h2>404!</h2>
+      <h4>User not found</h4>
+    </div> <!-- end error -->
+  </script>
+
+  <script id="repoTemplate" type="text/x-jsrender">
+    <div class="well" id="content">
+      <div class="row">
+        <div class="col-md-7">
+          <h4 class="repo-name">{{:name}}</h4>
+          <br><br>
+          <p class="description">{{:description}}</p>
+        </div>
+        <div class="col-md-3">
+          <span class="label label-default">Watchers: {{:watchers_count}}</span>
+          <span class="label label-warning">Stars: {{:stargazers_count}}</span>
+          <span class="label label-default">Forks: {{:forks_count}}</span>
+        </div>
+        <div class="col-md-2">
+          <br>
+          <a class="btn btn-default" href="{{:html_url}}" target="_blank">
+            Visit Repository <span class="glyphicon glyphicon-share"></span>
+          </a>
+        </div>
+      </div> <!-- end row -->
+    </div> <!-- end well --> 
+  </script>
+
+
   <!-- scripts -->
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <!-- Bootstrap js CDN -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- jQuery JsRender CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.84/jsrender.min.js"></script>  
   <!-- jQuery Pagination Plugin -->
-  <script src="vendor/js/jquery.twbsPagination.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
   <!-- Custom Script -->
-  <script src="assets/js/main.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
